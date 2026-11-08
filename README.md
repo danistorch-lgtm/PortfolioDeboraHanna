@@ -3,12 +3,12 @@
 Site portfólio (PT/EN) de eventos corporativos, de incentivo e internacionais.
 
 ## Estrutura
-- `public/` — site publicado na Vercel (HTML estático + fotos em `public/img/`).
-- `source/` — código-fonte em React + TypeScript + Tailwind. Conteúdo dos cases em `source/src/data.ts`.
+- `source/public/` — site publicado na Vercel (HTML estático + fotos em `img/`). A Vercel usa `source/` como raiz (ver `source/vercel.json`: sem build).
+- `codigo-fonte/` — código-fonte em React + TypeScript + Tailwind. Conteúdo dos cases em `codigo-fonte/src/data.ts`.
 
 ## Como atualizar
-1. Editar `source/src/data.ts` (cases, trajetória, depoimentos) ou `source/src/App.tsx`.
-2. Gerar o HTML único (bundle) e substituir o conteúdo de `public/index.html`.
+1. Editar `codigo-fonte/src/data.ts` (cases, trajetória, depoimentos) ou `codigo-fonte/src/App.tsx`.
+2. Gerar o HTML único (bundle) e substituir o conteúdo de `source/public/index.html`.
 3. Fazer commit no `main`: a Vercel publica automaticamente.
 
 ## Pendências antes de divulgar
