@@ -232,3 +232,123 @@ figcaption { margin-top: 18px; font-size: 11px; font-weight: 500; letter-spacing
 .bullets { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; }
 .bullets li { padding-left: 22px; position: relative; max-width: 60ch; }
 .bullets li::before { content: ""; position: absolute; left: 0; top: .8em; width: 12px; height: 2px; background: var(--accent); }
+
+/* ---------- menu móvel ---------- */
+.menu-btn { display: none; margin-left: auto; font-size: 12px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; padding: 8px 14px; border: 1.5px solid var(--accent); border-radius: 999px; color: var(--light); }
+.menu-movel { display: flex; flex-direction: column; border-top: 1px solid var(--line-dark); padding: 8px max(20px, env(safe-area-inset-left, 0px)) 18px; }
+.menu-movel a { font-family: var(--font-display); font-weight: 600; font-size: 26px; padding-block: 10px; text-decoration: none; border-bottom: 1px solid var(--line-dark); }
+@media (min-width: 860px) { .menu-movel { display: none; } }
+.tag-items { display: inline; }
+.tag-items i { font-style: normal; color: var(--accent); padding-inline: 10px; }
+
+/* ---------- celular ---------- */
+@media (max-width: 859px) {
+  .menu-btn { display: inline-flex; }
+  .lang { margin-left: 8px; }
+}
+@media (max-width: 720px) {
+  body { font-size: 15px; }
+  .topbar-in { height: 56px; gap: 12px; }
+  .mark { font-size: 15px; }
+  html { scroll-padding-top: 60px; }
+
+  /* topo */
+  .hero-in { padding-block: 56px 48px; }
+  .wordmark { font-size: clamp(44px, 13.5vw, 64px); }
+  .paren { display: block; margin-top: 22px; font-size: 13px; line-height: 1.6; }
+  .paren::before, .paren::after { display: none; }
+  .tag-items { display: flex; flex-direction: column; gap: 2px; }
+  .tag-items i { display: none; }
+  .tag-items > span::before { content: "( "; color: var(--accent); font-weight: 600; }
+  .tag-items > span::after { content: " )"; color: var(--accent); font-weight: 600; }
+
+  /* apresentação: foto primeiro, mais compacta */
+  .intro { padding-top: 0; }
+  .intro-photo { order: -1; }
+  .intro-photo img { aspect-ratio: 4 / 4.4; }
+  .intro-text { padding: 36px 20px 48px; gap: 24px; }
+  .intro-body { gap: 24px; }
+  .intro-body > p { font-size: 15.5px; }
+  .display { font-size: clamp(30px, 8.6vw, 40px); }
+  .stat dt { font-size: 30px; }
+  .stat dd { font-size: 11.5px; }
+  .ctas { flex-direction: column; }
+  .pill { width: 100%; min-width: 0; padding: 13px 18px; }
+
+  /* menos espaço vazio entre seções */
+  .brackets { display: none; }
+  .clients { padding-block: 44px; }
+  .client-list { gap: 8px 20px; font-size: 16px; margin-top: 16px; }
+  .featured { padding-block: 56px 8px; }
+  .featured .split-head { margin-bottom: 36px; }
+  .split-head, .split { gap: 20px; }
+  .ruled { padding-bottom: 16px; }
+  .portfolio, .skills, .career, .quotes, .contact { padding-block: 56px; }
+  .award-in { padding-block: 56px; gap: 24px; }
+
+  /* cases em destaque */
+  .story { padding-bottom: 56px; }
+  .story-photo img { height: 300px; }
+  .story-card { margin-top: -64px; width: calc(100% - 24px); padding: 18px 18px 4px; }
+  .story-title { font-size: 28px; }
+  .story-cols { margin-top: 18px; gap: 22px; }
+  .story-text { gap: 18px; }
+  .story-text p { font-size: 15.5px; }
+  .ficha { font-size: 13px; }
+  .ficha div { grid-template-columns: 7.2em minmax(0, 1fr); padding-block: 8px; }
+  .videos { margin-top: 24px; }
+  .video-play { width: 56px; }
+  .video-label { left: 14px; bottom: 10px; }
+  .video-title { font-size: 15px; }
+  /* galerias viram faixa com rolagem lateral */
+  .story-gallery { display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x mandatory; margin-top: 16px; margin-right: -20px; padding-right: 20px; }
+  .story-gallery img { flex: none; width: 70%; aspect-ratio: 4 / 3; scroll-snap-align: start; }
+
+  /* portfólio: filtros em faixa rolável, cards em 2 colunas compactas */
+  .side-title { font-size: 22px; margin-top: 8px; }
+  .side-text { display: none; }
+  .filters { flex-wrap: nowrap; overflow-x: auto; margin: 16px -20px 0; padding: 0 20px 6px; }
+  .filter { flex: none; }
+  .count { margin-top: 10px; }
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 12px; }
+  .card { gap: 3px; }
+  .card-img { margin-bottom: 8px; }
+  .card .kicker { font-size: 11px; line-height: 1.3; }
+  .card-title { font-size: 15.5px; line-height: 1.2; }
+  .card-meta { font-size: 9.5px; padding-bottom: 8px; margin-top: 4px; }
+  .badge { left: 6px; top: 6px; padding: 3px 7px; font-size: 9px; gap: 4px; }
+
+  /* skills */
+  .side-img { display: none; }
+  .skill-grid { margin-top: 24px; }
+  .skill { padding-block: 16px; }
+  .skill h3 { font-size: 17px; }
+  .skill p { font-size: 14px; }
+  .sub { margin-top: 40px; font-size: 24px; }
+  .process { grid-template-columns: 1fr 1fr; gap: 18px 14px; margin-top: 18px; }
+  .process strong { font-size: 16px; }
+  .process span:last-child { font-size: 13px; }
+
+  /* trajetória */
+  .facts { margin-block: 0 18px; }
+  .timeline li { padding-block: 16px; }
+  .tl-org { font-size: 18px; }
+  .tl-body { font-size: 14px; }
+
+  /* prêmio */
+  .award-photo { max-width: 160px; }
+  .award-body { font-size: 15.5px; margin-block: 14px 22px; }
+
+  /* depoimentos */
+  .quote-lead { margin-top: 18px; }
+  .quote-lead blockquote { font-size: 22px; line-height: 1.3; }
+  .quote-grid { margin-top: 40px; gap: 32px; }
+  .quote blockquote { font-size: 15.5px; }
+
+  /* contato e modal */
+  .contact-link { font-size: 15px; }
+  .sheet { padding-top: max(16px, env(safe-area-inset-top, 0px)); }
+  .sheet-title { font-size: 26px; }
+  .close { width: 40px; height: 40px; }
+  .sheet-gallery img { height: 200px; }
+}

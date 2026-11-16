@@ -82,6 +82,7 @@ export default function App() {
   const [lang, setLang] = useState<Lang>(readLang)
   const [filter, setFilter] = useState<Cat | 'todos'>('todos')
   const [open, setOpen] = useState<Case | null>(null)
+  const [menu, setMenu] = useState(false)
   const t = (x: T) => x[lang]
   const closeCase = useCallback(() => setOpen(null), [])
 
@@ -108,11 +109,21 @@ export default function App() {
             <a href="#trajetoria">{t(UI.nav.career)}</a>
             <a href="#contato">{t(UI.nav.contact)}</a>
           </nav>
+          <button type="button" className="menu-btn" aria-expanded={menu} aria-controls="menu-movel" onClick={() => setMenu(!menu)}>
+            {menu ? t(UI.close) : 'Menu'}
+          </button>
           <div className="lang" role="group" aria-label="Idioma / Language">
             <button type="button" aria-pressed={lang === 'pt'} onClick={() => setLang('pt')}>PT</button>
             <button type="button" aria-pressed={lang === 'en'} onClick={() => setLang('en')}>EN</button>
           </div>
         </div>
+        {menu && (
+          <nav id="menu-movel" className="menu-movel" aria-label="Menu">
+            {(['cases', 'skills', 'career', 'contact'] as const).map((k) => (
+              <a key={k} href={{ cases: '#cases', skills: '#skills', career: '#trajetoria', contact: '#contato' }[k]} onClick={() => setMenu(false)}>{t(UI.nav[k])}</a>
+            ))}
+          </nav>
+        )}
       </header>
 
       <main>
@@ -120,7 +131,9 @@ export default function App() {
         <section id="inicio" className="hero dark">
           <div className="wrap hero-in">
             <h1 className="wordmark">Débora Hanna Storch</h1>
-            <p className="paren tagline"><span>{t(UI.tagline)}</span></p>
+            <p className="paren tagline">
+              <span className="tag-items">{t(UI.tagline).split(' | ').map((x, i) => <span key={x}>{i > 0 && <i aria-hidden="true">|</i>}{x}</span>)}</span>
+            </p>
           </div>
         </section>
 
