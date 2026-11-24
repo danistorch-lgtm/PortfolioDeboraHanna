@@ -3,17 +3,19 @@
  * README rápido:
  * - Layout inspirado em agências de experiência B2B: faixas escuras e claras alternadas, títulos grandes,
  *   rótulos entre parênteses, cases em destaque com foto sangrando e cartão sobreposto, botões em pílula.
- * - Conteúdo em src/data.ts (PT/EN). Fotos em public/img.
+ * - Conteúdo em src/data.ts (PT/EN) e src/es.ts (espanhol, dicionário indexado pelo texto em português). Fotos em public/img.
  * - Vídeos do YouTube: capa estática; o player (youtube-nocookie) só carrega quando a pessoa clica.
  * - Contato: abre o e-mail do visitante já endereçado (o endereço não aparece em texto no código).
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { ES } from './es'
 import { CASES, CATS, PROCESS, SERVICES, TESTIMONIALS, TIMELINE, type Case, type Cat, type Lang, type T, type Video } from './data'
 
 const UI = {
   nav: { cases: { pt: 'Cases', en: 'Work' }, skills: { pt: 'Skills', en: 'Skills' }, career: { pt: 'Trajetória', en: 'Career' }, contact: { pt: 'Contato', en: 'Contact' } },
   tagline: { pt: 'Eventos corporativos | Eventos de incentivo | Eventos internacionais', en: 'Corporate events | Incentive events | International events' },
-  introTitle: { pt: 'Do conceito ao resultado pós-evento', en: 'From concept to post-event results' },
+  mark: { pt: 'Portfólio', en: 'Portfolio' },
+  introTitle: { pt: 'Entrega 360º do conceito ao resultado pós-evento', en: '360º delivery, from concept to post-event results' },
   lede: {
     pt: 'Há mais de 15 anos eu crio, planejo e conduzo eventos para executivos: feiras, congressos, premiações, summits, imersões no exterior e encontros C-level. Do conceito ao resultado pós-evento.',
     en: 'For over 15 years I have created, planned and run events for executives: trade shows, congresses, awards nights, summits, international immersions and C-level gatherings. From concept to post-event results.',
@@ -21,7 +23,7 @@ const UI = {
   ctaCases: { pt: 'Ver cases', en: 'See work' },
   ctaCareer: { pt: 'Ver trajetória', en: 'See career' },
   stats: [
-    { n: '15+', l: { pt: 'anos de experiência em eventos', en: 'years of experience in events' } },
+    { n: '+15', l: { pt: 'anos de experiência em eventos', en: 'years of experience in events' } },
     { n: '+100', l: { pt: 'eventos realizados', en: 'events delivered' } },
     { n: '7', l: { pt: 'países com eventos liderados', en: 'countries with events led' } },
   ],
@@ -66,14 +68,14 @@ const UI = {
   top: { pt: 'Voltar ao topo', en: 'Back to top' },
 }
 
-const CLIENTS = ['Amicci', 'APAS', 'Betano', 'Board Academy', 'Gilead Sciences', 'Gouvêa Ecosystem', 'Grupo Padrão', 'GS1 Brasil', 'Hilton Hotels', 'Kenvue', 'MCI Brasil', 'McKinsey & Company', 'OneTrust', 'Rabobank', 'RD Station', 'Sanofi', 'SAP', 'Schneider Electric', 'Theramax']
+const CLIENTS = ['Amicci', 'APAS', 'Betano', 'Board Academy', 'Gilead Sciences', 'Gouvêa Ecosystem', 'Grupo Padrão', 'GS1 Brasil', 'Hilton Hotels', 'Kenvue', 'MCI Brasil', 'McKinsey & Company', 'OneTrust', 'Rabobank', 'RD Station', 'Sanofi', 'SAP', 'Schneider Electric', 'Theramex']
 const LINKEDIN = 'https://www.linkedin.com/in/deborahannastorch/'
 const CAIO = 'https://www.premiocaio.com.br/cases/2019/evento-corporativo/4984/premio-automacao-2018'
 
 function readLang(): Lang {
   try {
     const v = localStorage.getItem('dhs-lang')
-    if (v === 'pt' || v === 'en') return v
+    if (v === 'pt' || v === 'en' || v === 'es') return v
   } catch { /* storage indisponível */ }
   return 'pt'
 }
@@ -83,11 +85,13 @@ export default function App() {
   const [filter, setFilter] = useState<Cat | 'todos'>('todos')
   const [open, setOpen] = useState<Case | null>(null)
   const [menu, setMenu] = useState(false)
-  const t = (x: T) => x[lang]
+  // Espanhol: procura no dicionário pela frase em português; sem tradução, mostra o português (nomes próprios).
+  const t = useCallback((x: T) => (lang === 'es' ? ES[x.pt] ?? x.pt : x[lang]), [lang])
+  const tr = (pt: string, en: string, es: string) => ({ pt, en, es })[lang]
   const closeCase = useCallback(() => setOpen(null), [])
 
   useEffect(() => {
-    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en'
+    document.documentElement.lang = { pt: 'pt-BR', en: 'en', es: 'es' }[lang]
     try { localStorage.setItem('dhs-lang', lang) } catch { /* ignora */ }
   }, [lang])
 
@@ -102,7 +106,7 @@ export default function App() {
     <>
       <header className="topbar">
         <div className="wrap topbar-in">
-          <a href="#inicio" className="mark">Débora Hanna Storch</a>
+          <a href="#inicio" className="mark">{t(UI.mark)}</a>
           <nav aria-label="Principal" className="nav">
             <a href="#cases">{t(UI.nav.cases)}</a>
             <a href="#skills">{t(UI.nav.skills)}</a>
@@ -112,9 +116,10 @@ export default function App() {
           <button type="button" className="menu-btn" aria-expanded={menu} aria-controls="menu-movel" onClick={() => setMenu(!menu)}>
             {menu ? t(UI.close) : 'Menu'}
           </button>
-          <div className="lang" role="group" aria-label="Idioma / Language">
+          <div className="lang" role="group" aria-label="Idioma / Language / Idioma">
             <button type="button" aria-pressed={lang === 'pt'} onClick={() => setLang('pt')}>PT</button>
             <button type="button" aria-pressed={lang === 'en'} onClick={() => setLang('en')}>EN</button>
+            <button type="button" aria-pressed={lang === 'es'} onClick={() => setLang('es')}>ES</button>
           </div>
         </div>
         {menu && (
@@ -159,7 +164,7 @@ export default function App() {
               </div>
             </div>
             <figure className="intro-photo">
-              <img src="img/portrait-noite.jpg" alt="Débora Hanna Storch" width={912} height={1140} />
+              <img src="img/portrait-recorte.jpg" alt="Débora Hanna Storch" width={912} height={570} />
             </figure>
           </div>
         </section>
@@ -294,12 +299,12 @@ export default function App() {
               <div className="facts">
                 <div>
                   <p className="mini">{t(UI.edu)}</p>
-                  <p>{lang === 'pt' ? 'Comunicação, Reichman University (Israel)' : 'Communications, Reichman University (Israel)'}</p>
-                  <p>{lang === 'pt' ? 'Gestão Hoteleira, Faculdade Renascença' : 'Hotel Management, Faculdade Renascença'}</p>
+                  <p>{tr('Comunicação, Reichman University (Israel)', 'Communications, Reichman University (Israel)', 'Comunicación, Reichman University (Israel)')}</p>
+                  <p>{tr('Gestão Hoteleira, Faculdade Renascença', 'Hotel Management, Faculdade Renascença', 'Gestión Hotelera, Faculdade Renascença')}</p>
                 </div>
                 <div>
                   <p className="mini">{t(UI.langs)}</p>
-                  <p>{lang === 'pt' ? 'Português nativo · Inglês fluente · Espanhol e italiano para conversação' : 'Native Portuguese · Fluent English · Conversational Spanish and Italian'}</p>
+                  <p>{tr('Português nativo · Inglês fluente · Espanhol e italiano para conversação', 'Native Portuguese · Fluent English · Conversational Spanish and Italian', 'Portugués nativo · Inglés fluido · Español e italiano conversacional')}</p>
                 </div>
               </div>
               <a className="pill" href={LINKEDIN} target="_blank" rel="noreferrer">{t(UI.linkedin)} <Chevron /></a>
@@ -343,14 +348,14 @@ export default function App() {
             {TESTIMONIALS.slice(0, 1).map((q, i) => (
               <figure key={i} className="quote-lead">
                 <blockquote>“{t(q.quote)}”</blockquote>
-                <figcaption>{t(q.who)}{lang === 'en' ? ' · translated' : ''}</figcaption>
+                <figcaption>{t(q.who)}{tr('', ' · translated', ' · traducido')}</figcaption>
               </figure>
             ))}
             <div className="quote-grid">
               {TESTIMONIALS.slice(1).map((q, i) => (
                 <figure key={i} className="quote">
                   <blockquote>“{t(q.quote)}”</blockquote>
-                  <figcaption>{t(q.who)}{lang === 'en' ? ' · translated' : ''}</figcaption>
+                  <figcaption>{t(q.who)}{tr('', ' · translated', ' · traducido')}</figcaption>
                 </figure>
               ))}
             </div>
@@ -470,6 +475,7 @@ function CaseDialog({ c, onClose, t, lang }: { c: Case | null; onClose: () => vo
     return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = o; prev?.focus() }
   }, [c, onClose])
   if (!c) return null
+  const bullets = lang === 'es' ? c.bullets.pt.map((b) => ES[b] ?? b) : c.bullets[lang]
   return (
     <>
       <div className="overlay" onClick={onClose} />
@@ -494,9 +500,9 @@ function CaseDialog({ c, onClose, t, lang }: { c: Case | null; onClose: () => vo
         <div className="sheet-body">
           <div>
             <p className="sheet-sum">{t(c.summary)}</p>
-            {c.bullets[lang].length > 0 && (
+            {bullets.length > 0 && (
               <ul className="bullets">
-                {c.bullets[lang].map((b) => (
+                {bullets.map((b) => (
                   <li key={b}>{b}</li>
                 ))}
               </ul>
@@ -526,7 +532,7 @@ function ContactForm({ lang, t }: { lang: Lang; t: (x: T) => string }) {
     e.preventDefault()
     if (!msg.trim()) { setErr(t(F.need)); return }
     setErr('')
-    const subject = lang === 'pt' ? 'Contato pelo site' : 'Website contact'
+    const subject = { pt: 'Contato pelo site', en: 'Website contact', es: 'Contacto desde el sitio' }[lang]
     const href = `mailto:${TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(msg.trim())}`
     setMailto(href); setCopied(false)
     try { window.location.href = href } catch { /* o botão abaixo cobre */ }

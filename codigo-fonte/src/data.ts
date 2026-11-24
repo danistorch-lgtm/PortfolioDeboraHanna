@@ -4,7 +4,7 @@
  * Regra: nenhum número inventado. Onde o dado não existe, o campo fica vazio.
  */
 
-export type Lang = 'pt' | 'en'
+export type Lang = 'pt' | 'en' | 'es'
 export type T = { pt: string; en: string }
 
 export type Cat = 'feiras' | 'premiacoes' | 'internacional' | 'incentivo' | 'executivo' | 'digital' | 'cultura'
@@ -60,8 +60,8 @@ export const CASES: Case[] = [
     pax: { pt: '800 lideranças da indústria e do varejo', en: '800 industry and retail leaders' },
     role: { pt: 'Concepção e Gestão 360º', en: 'Concept and end-to-end management' },
     summary: {
-      pt: 'A noite de premiação que reúne autoridades, indústria e varejo. O desafio era elevar o engajamento e a sofisticação da entrega. O case ganhou o Prêmio Caio 2019.',
-      en: 'The awards night that brings together government, industry and retail. The brief was to raise engagement and polish. The case won a 2019 Prêmio Caio.',
+      pt: 'A noite de premiação que reúne autoridades, indústria e varejo. O desafio era inovar e encantar na 20ª edição da premiação, com alta sofisticação. O case ganhou o Prêmio Caio 2019.',
+      en: 'The awards night that brings together government, industry and retail. The brief was to innovate and delight at the 20th edition of the awards, with a high level of polish. The case won a 2019 Prêmio Caio.',
     },
     bullets: {
       pt: [
@@ -91,7 +91,7 @@ export const CASES: Case[] = [
     place: { pt: 'Expo Center Norte, São Paulo', en: 'Expo Center Norte, São Paulo' },
     date: { pt: '2023 e 2024', en: '2023 and 2024' },
     pax: { pt: '4.000 visitantes · 100+ expositores', en: '4,000 visitors · 100+ exhibitors' },
-    role: { pt: 'Concepção e gestão 360º', en: 'Concept and end-to-end management' },
+    role: { pt: 'Concepção e Gestão 360º', en: 'Concept and end-to-end management' },
     summary: {
       pt: 'Um evento criado do zero que se tornou o maior evento do mercado de private label da América Latina. A estreia superou as metas e o evento segue no calendário do setor.',
       en: 'An event built from scratch that became the largest private label event in Latin America. The first edition beat its targets, and the event remains on the industry calendar.',
@@ -148,15 +148,16 @@ export const CASES: Case[] = [
     cats: ['incentivo'],
     flagship: 4,
     sortYear: 2026,
-    title: { pt: 'Viagem de incentivo aos Lençóis Maranhenses', en: 'Incentive trip to Lençóis Maranhenses' },
-    kicker: { pt: 'Viagem de incentivo', en: 'Incentive trip' },
+    title: { pt: 'Evento de incentivo aos Lençóis Maranhenses', en: 'Incentive event in Lençóis Maranhenses' },
+    kicker: { pt: 'Evento de incentivo', en: 'Incentive event' },
     clientLabel: 'cliente',
     client: 'Kenvue',
     place: { pt: 'Lençóis Maranhenses, Maranhão', en: 'Lençóis Maranhenses, Brazil' },
     date: { pt: 'Setembro 2026', en: 'September 2026' },
+    role: { pt: 'Concepção e Gestão 360º', en: 'Concept and end-to-end management' },
     summary: {
-      pt: 'Uma viagem de incentivo nos Lençóis Maranhenses, com passeios pelas dunas e lagoas, lounge na praia e noite temática.',
-      en: 'An incentive trip to Lençóis Maranhenses, with dune and lagoon excursions, a beach lounge and a themed night.',
+      pt: 'Poucos cenários no Brasil impressionam tanto quanto os Lençóis Maranhenses. Nesta viagem de incentivo, o grupo viveu dunas e lagoas em passeios guiados, fez piquenique com vista para a paisagem e teve uma noite com show temático. Passou também por um city tour em São Luís, com almoço de encerramento e entrega de medalhas. Cada detalhe, da logística aos gifts, foi planejado para valorizar quem conquistou a viagem.',
+      en: 'Few landscapes in Brazil impress as much as Lençóis Maranhenses. On this incentive trip, the group explored dunes and lagoons on guided tours, had a picnic overlooking the scenery and enjoyed a night with a themed show. They also took a city tour of São Luís, with a closing lunch and a medal ceremony. Every detail, from logistics to gifts, was planned to honor those who earned the trip.',
     },
     bullets: { pt: [], en: [] },
     images: [IMG('ken-dunas'), IMG('ken-grupo'), IMG('ken-lounge'), IMG('ken-barco'), IMG('ken-festa'), IMG('ken-noite')],
@@ -172,7 +173,7 @@ export const CASES: Case[] = [
     place: { pt: 'Amsterdã e Madri', en: 'Amsterdam and Madrid' },
     date: { pt: 'Maio 2024', en: 'May 2024' },
     pax: { pt: '25 lideranças de private label', en: '25 private label leaders' },
-    role: { pt: 'Idealização e execução', en: 'Concept and delivery' },
+    role: { pt: 'Concepção e Gestão 360º', en: 'Concept and end-to-end management' },
     summary: {
       pt: 'Programa que levou executivos brasileiros à PLMA Amsterdã, a maior feira de marcas próprias do mundo.',
       en: 'A program that took Brazilian executives to PLMA Amsterdam, the world’s largest private label show.',
@@ -202,8 +203,8 @@ export const CASES: Case[] = [
       en: 'A panel track with C-level executives from Brazil’s largest chains, positioning Amicci as the private label authority.',
     },
     bullets: {
-      pt: ['Temas de Marcas Próprias 4.0 à integração de redes de negócios.'],
-      en: ['Topics from Private Label 4.0 to retail network integration.'],
+      pt: [],
+      en: [],
     },
     images: [IMG('apas24-2-palco'), IMG('apas24-2-plateia'), IMG('apas24-2-publico'), IMG('apas24-2-painel')],
     videos: [YT('CRXcEDRtExQ', 'Fórum de Marcas Próprias', 'Private Label Forum')],
@@ -217,9 +218,10 @@ export const CASES: Case[] = [
     clientLabel: 'empresa',
     client: 'Amicci',
     date: { pt: 'Maio 2023', en: 'May 2023' },
+    role: { pt: 'Concepção e Gestão 360º', en: 'Concept and end-to-end management' },
     summary: {
-      pt: 'Encontro da Amicci com café de boas-vindas e apresentação para o público convidado.',
-      en: 'An Amicci gathering with a welcome breakfast and a presentation for invited guests.',
+      pt: 'Encontro da Amicci com café de boas-vindas temático de marcas próprias, apresentações e visita ao laboratório para o público convidado.',
+      en: 'An Amicci gathering with a private-label themed welcome breakfast, presentations and a lab visit for invited guests.',
     },
     bullets: { pt: [], en: [] },
     images: [IMG('ac-apresentacao'), IMG('ac-cafe')],
@@ -234,11 +236,11 @@ export const CASES: Case[] = [
     client: 'Grupo Padrão (2015) · Amicci (2024)',
     place: { pt: 'Javits Center, Nova York', en: 'Javits Center, New York' },
     date: { pt: 'Janeiro 2015 e janeiro 2024', en: 'January 2015 and January 2024' },
-    pax: { pt: '2015: 100 diretores e CEOs', en: '2015: 100 directors and CEOs' },
-    role: { pt: '2015: gestão da delegação brasileira', en: '2015: Brazilian delegation management' },
+    pax: { pt: '100 diretores e CEOs', en: '100 directors and CEOs' },
+    role: { pt: 'Gestão e produção do programa', en: 'Program management and production' },
     summary: {
-      pt: 'Duas edições da maior feira de varejo do mundo, com nove anos de intervalo. Em 2015, a gestão da delegação brasileira do Grupo Padrão. Em 2024, com a Amicci.',
-      en: 'Two editions of the world’s largest retail show, nine years apart. In 2015, managing Grupo Padrão’s Brazilian delegation. In 2024, with Amicci.',
+      pt: 'Duas edições da maior feira de varejo do mundo. Em 2015, a gestão da delegação brasileira do Grupo Padrão. Em 2024, com a Amicci, em parceria com a FGV.',
+      en: 'Two editions of the world’s largest retail show. In 2015, managing Grupo Padrão’s Brazilian delegation. In 2024, with Amicci, in partnership with FGV.',
     },
     bullets: {
       pt: ['Visitas técnicas guiadas a operações de referência em Nova York.', 'Jantares exclusivos e evento de encerramento para a comitiva.'],
@@ -250,16 +252,16 @@ export const CASES: Case[] = [
     id: 'rd-summit',
     cats: ['feiras'],
     sortYear: 2022,
-    title: { pt: 'RD Summit 2022', en: 'RD Summit 2022' },
-    kicker: { pt: 'Parcerias em congresso', en: 'Congress partnerships' },
+    title: { pt: 'RD Summit', en: 'RD Summit' },
+    kicker: { pt: 'Parcerias em Festival de Inovação', en: 'Partnerships at an innovation festival' },
     clientLabel: 'cliente',
     client: 'RD Station',
     place: { pt: 'Florianópolis', en: 'Florianópolis' },
     date: { pt: 'Outubro 2022', en: 'October 2022' },
     role: { pt: 'Parcerias', en: 'Partnerships' },
     summary: {
-      pt: 'Parcerias e suporte para o RD Summit, um dos maiores eventos de marketing, vendas e inovação do país.',
-      en: 'Partnerships and support for RD Summit, one of Brazil’s largest marketing, sales and innovation events.',
+      pt: 'Realização de parcerias para o RD Summit, um dos maiores eventos de marketing, vendas e inovação do país.',
+      en: 'Partnership development for RD Summit, one of Brazil’s largest marketing, sales and innovation events.',
     },
     bullets: { pt: [], en: [] },
     images: [IMG('rd-letreiro'), IMG('rd-estande')],
@@ -275,7 +277,7 @@ export const CASES: Case[] = [
     place: { pt: 'Hotel Pullman Ibirapuera, São Paulo', en: 'Hotel Pullman Ibirapuera, São Paulo' },
     date: { pt: 'Outubro 2022', en: 'October 2022' },
     pax: { pt: '200 conselheiros e lideranças', en: '200 board members and leaders' },
-    role: { pt: 'Concepção e execução', en: 'Concept and delivery' },
+    role: { pt: 'Concepção e Gestão 360º', en: 'Concept and end-to-end management' },
     summary: {
       pt: 'O evento de estreia de uma edtech de formação de conselheiros, com um dia completo de conteúdo e hospitalidade.',
       en: 'The debut event of an edtech that trains board members, with a full day of content and hospitality.',
@@ -292,13 +294,14 @@ export const CASES: Case[] = [
     cats: ['executivo'],
     sortYear: 2022,
     title: { pt: 'Privacy Party', en: 'Privacy Party' },
-    kicker: { pt: 'Evento de relacionamento', en: 'Relationship event' },
+    kicker: { pt: 'Ativação em evento de relacionamento', en: 'Activation at a relationship event' },
     clientLabel: 'empresa',
     client: 'OneTrust',
     date: { pt: 'Março 2022', en: 'March 2022' },
+    role: { pt: 'Concepção e Gestão 360º', en: 'Concept and end-to-end management' },
     summary: {
-      pt: 'Festa de relacionamento da OneTrust, com cenografia e coquetel para convidados.',
-      en: 'A OneTrust relationship party, with set design and a cocktail reception for guests.',
+      pt: 'Evento de relacionamento, com ativação da OneTrust em coquetel para convidados.',
+      en: 'A relationship event, with a OneTrust activation at a cocktail reception for guests.',
     },
     bullets: { pt: [], en: [] },
     images: [IMG('pp-salao'), IMG('pp-bar'), IMG('pp-drink')],
@@ -314,7 +317,7 @@ export const CASES: Case[] = [
     place: { pt: 'Arca (2022) · Hotel Unique (2019), São Paulo', en: 'Arca (2022) · Hotel Unique (2019), São Paulo' },
     date: { pt: '2019 e 2022', en: '2019 and 2022' },
     pax: { pt: '1.200 (2022) · 400 lideranças (2019)', en: '1,200 (2022) · 400 leaders (2019)' },
-    role: { pt: 'Gestão do evento', en: 'Event management' },
+    role: { pt: 'Idealização e concepção', en: 'Ideation and concept' },
     summary: {
       pt: 'O encontro da GS1 Brasil sobre tecnologia, varejo e indústria. Em 2022, marcou a volta ao presencial num galpão industrial transformado.',
       en: 'GS1 Brasil’s gathering on technology, retail and industry. In 2022 it marked the return to in-person, in a converted industrial warehouse.',
@@ -343,8 +346,8 @@ export const CASES: Case[] = [
       en: 'An online event for entrepreneurs, with content tracks and sponsorship packages built for digital.',
     },
     bullets: {
-      pt: ['Captação de patrocinadores com o time comercial.', 'Supervisão técnica e criativa da transmissão em estúdio.'],
-      en: ['Sponsor sales together with the commercial team.', 'Technical and creative supervision of the studio broadcast.'],
+      pt: ['Apoio ao time comercial para captação de patrocinadores.', 'Gestão e alinhamento dos speakers.', 'Supervisão técnica e criativa da transmissão em estúdio.'],
+      en: ['Support to the commercial team in securing sponsors.', 'Speaker management and alignment.', 'Technical and creative supervision of the studio broadcast.'],
     },
     images: [IMG('fab2-equipe'), IMG('fab2-estudio'), IMG('fab2-bastidor')],
     videos: [YT('iv-9Qx4a_h4', 'Melhores momentos', 'Highlights')],
@@ -382,18 +385,18 @@ export const CASES: Case[] = [
     client: 'GS1 Brasil',
     date: { pt: '2019', en: '2019' },
     pax: { pt: '150 participantes por edição', en: '150 attendees per edition' },
-    role: { pt: 'Operação e execução', en: 'Operations and delivery' },
+    role: { pt: 'Concepção e Gestão 360º', en: 'Concept and end-to-end management' },
     summary: {
       pt: 'Dois summits temáticos: um para o ecossistema de pequenos empreendedores e outro para líderes da saúde, de hospitais a startups e farmacêuticas.',
       en: 'Two themed summits: one for the small business ecosystem and one for healthcare leaders, from hospitals to startups and pharma.',
     },
     bullets: {
       pt: [
-        'Summit Pequeno Empreendedor: trilhas de conteúdo, mediação de palestra e feira de parceiros e patrocinadores.',
+        'Summit Pequeno Empreendedor: trilhas de conteúdo e feira de parceiros e patrocinadores.',
         'Summit Saúde: roteiro de visitas ao Centro de Inovação e conteúdo com marcas apoiadoras.',
       ],
       en: [
-        'Small Business Summit: content tracks, a moderated keynote and a partner and sponsor expo.',
+        'Small Business Summit: content tracks and a partner and sponsor expo.',
         'Health Summit: guided visits to the Innovation Center and content with supporting brands.',
       ],
     },
@@ -504,7 +507,7 @@ export const CASES: Case[] = [
     place: { pt: 'Hotel Arts, Barcelona', en: 'Hotel Arts, Barcelona' },
     date: { pt: 'Outubro 2015', en: 'October 2015' },
     pax: { pt: '150 diretores e CEOs de telecom', en: '150 telecom directors and CEOs' },
-    role: { pt: 'Planejamento e execução', en: 'Planning and delivery' },
+    role: { pt: 'Concepção e Gestão 360º', en: 'Concept and end-to-end management' },
     summary: {
       pt: 'Uma semana de imersão para convidados C-level, equilibrando conteúdo técnico e relacionamento.',
       en: 'A week-long immersion for C-level guests, balancing technical content and relationship-building.',
@@ -526,7 +529,7 @@ export const CASES: Case[] = [
     place: { pt: 'Casa Fasano, São Paulo', en: 'Casa Fasano, São Paulo' },
     date: { pt: 'Março 2015', en: 'March 2015' },
     pax: { pt: 'Convidados VIP e patrocinadores', en: 'VIP guests and sponsors' },
-    role: { pt: 'Produção 360º', en: 'End-to-end production' },
+    role: { pt: 'Concepção e Gestão 360º', en: 'Concept and end-to-end management' },
     summary: {
       pt: 'A celebração dos 20 anos da revista, para convidados VIP e patrocinadores.',
       en: 'The magazine’s 20th anniversary celebration, for VIP guests and sponsors.',
@@ -547,6 +550,7 @@ export const CASES: Case[] = [
     client: 'Gouvêa Ecosystem',
     place: { pt: 'Chicago, Estados Unidos', en: 'Chicago, United States' },
     date: { pt: 'Maio 2014', en: 'May 2014' },
+    role: { pt: 'Concepção e Gestão 360º', en: 'Concept and end-to-end management' },
     summary: {
       pt: 'Delegação brasileira na NRA Show, a maior feira de food service dos Estados Unidos, com visitas técnicas, reuniões e jantar de relacionamento.',
       en: 'A Brazilian delegation at the NRA Show, the largest food service show in the United States, with store visits, meetings and a relationship dinner.',
@@ -561,7 +565,9 @@ export const CASES: Case[] = [
     title: { pt: 'Pós-NRF 2014', en: 'Post-NRF 2014' },
     kicker: { pt: 'Seminário de conteúdo', en: 'Content seminar' },
     clientLabel: 'empresa',
+    place: { pt: 'São Paulo, Rio de Janeiro e Recife', en: 'São Paulo, Rio de Janeiro and Recife' },
     date: { pt: '2014', en: '2014' },
+    role: { pt: 'Concepção e Gestão 360º', en: 'Concept and end-to-end management' },
     summary: {
       pt: 'Seminário no Brasil com os destaques da NRF para executivos do varejo.',
       en: 'A seminar in Brazil with the NRF highlights for retail executives.',
